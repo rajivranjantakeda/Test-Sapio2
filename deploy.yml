@@ -1,0 +1,27 @@
+# Keep this file in source control.
+
+---
+# AWS connection settings:
+aws:
+  # Region should be close to your customer.
+  region: us-east-1
+  # AWS profile name goes in local.yml.
+
+# The name of your apprunner. Name must be all lowercase.
+name: takeda-services
+
+# Environments (docker tag, git branch):
+# Tags do not need to have a one-to-one relationship with branches.
+# You can have more or less than three tags, and tags may have any names; this is just an example.
+images:
+  - tag: dev
+    branch: master
+  - tag: qa
+    branch: rc/8.5
+  - tag: prod
+    branch: rc/8.5
+
+apprunner:
+  vpc_connector: pywebhooks
+  role: PythonWebhookAppRunnerRole
+  ping_interval: 20
